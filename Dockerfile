@@ -79,6 +79,10 @@ RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
 #Install symfony dependence
 RUN apt-get update
 
+#Fix The method driver /usr/lib/apt/methods/https could not be found.
+RUN apt-get install apt-transport-https
+
+#Install gnumeric
 RUN apt-get install -y --no-install-recommends gnumeric
 
 #Install node.js
