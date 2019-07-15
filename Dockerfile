@@ -72,8 +72,11 @@ RUN { \
 
 VOLUME /var/lib/mysql
 
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+COPY docker-entrypoint.sh /usr/local/bin/mysql-entrypoint.sh
+
+RUN chmod +x /usr/local/bin/mysql-entrypoint.sh
+
+RUN ln -s usr/local/bin/mysql-entrypoint.sh /entrypoint.sh # backwards compat
 
 #Install symfony dependence
 RUN apt-get update
@@ -94,7 +97,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     apt update && \
     apt install --no-install-recommends yarn
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/mysql-entrypoint.sh"]
 
 EXPOSE 3306 33060
 CMD ["mysqld"]
