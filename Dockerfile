@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # File::Copy
 # Sys::Hostname
 # Data::Dumper
-		perl \
+		perl
 
 RUN set -ex; \
 # gpg: key 5072E1F5: public key "MySQL Release Engineering <mysql-build@oss.oracle.com>" imported
