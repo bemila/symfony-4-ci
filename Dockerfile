@@ -1,5 +1,8 @@
 FROM bctandoc/symfony-4-docker
 
+#Install intl
+RUN docker-php-ext-install intl
+
 #Install symfony dependence
 RUN apt-get update
 
